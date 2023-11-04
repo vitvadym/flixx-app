@@ -216,4 +216,4 @@ const init = () => {
   highlightActiveLink()
 };
 
-document.addEventListener('DOMContentLoaded', init)
+document.addEventListener('readystatechange', init)
