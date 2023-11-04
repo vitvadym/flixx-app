@@ -11,15 +11,30 @@ const highlightActiveLink = () => {
   });
 };
 
+const showSpinner = () => {
+  document.querySelector(".overlay").classList.add("show");
+};
+
+const hideSpinner = () => {
+  document.querySelector(".overlay").classList.remove("show");
+};
+
+
 const fetchData = async (endpoint) => {
   const API_KEY = "ecfebf36fb13c9599b30b4385926dcff";
   const API_URL = "https://api.themoviedb.org/3";
 
   try {
+    showSpinner();
+
     const response = await fetch(
       `${API_URL}/discover/${endpoint}?api_key=${API_KEY}&language=en-US`
     );
     const data = await response.json();
+
+    setTimeout(() => {
+      hideSpinner();
+    }, 400);
 
     return data;
   } catch (error) {
@@ -62,6 +77,43 @@ const displayPopularMovies = async () => {
   });
 };
 
+const displayPopularShows = async () => {
+  const parent = document.getElementById('popular-shows');
+  const { results }  = await fetchData('tv');
+
+  results.forEach((show) => {
+    const {
+      id,
+      original_name: title,
+      poster_path: image,
+      first_air_date: date,
+    } = show;
+
+    const TVShowCard = document.createElement("div");
+    TVShowCard.classList.add("card");
+
+    TVShowCard.innerHTML = `
+    <a href=tv-details.html?id=${id}>
+    <img
+      src=https://image.tmdb.org/t/p/w500/${image}
+      class="card-img-top"
+      alt=${title}
+    />
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">${title}</h5>
+    <p class="card-text">
+      <small class="text-muted">Release: ${date}</small>
+    </p>
+  </div>
+    `;
+
+    parent.appendChild(TVShowCard);
+  });
+};
+
+
+
 const init = () => {
   switch (route.page) {
     case "/":
@@ -70,15 +122,14 @@ const init = () => {
       break;
 
     case "/movie-details.html":
-      console.log("details");
       break;
 
     case "/search.html":
-      console.log("search");
+
       break;
 
     case "/shows.html":
-      console.log("shows");
+      displayPopularShows();
       break;
 
     case "/tv-details.html":
