@@ -28,13 +28,13 @@ const fetchData = async (endpoint) => {
     showSpinner();
 
     const response = await fetch(
-      `${API_URL}/discover/${endpoint}?api_key=${API_KEY}&language=en-US`
+      `${API_URL}/${endpoint}?api_key=${API_KEY}&language=en-US`
     );
     const data = await response.json();
 
     setTimeout(() => {
       hideSpinner();
-    }, 400);
+    }, 300);
 
     return data;
   } catch (error) {
@@ -44,7 +44,7 @@ const fetchData = async (endpoint) => {
 
 const displayPopularMovies = async () => {
   const parent = document.getElementById('popular-movies');
-  const { results } = await fetchData("movie");
+  const { results } = await fetchData("movie/popular");
 
   results.forEach((movie) => {
     const {
@@ -79,7 +79,7 @@ const displayPopularMovies = async () => {
 
 const displayPopularShows = async () => {
   const parent = document.getElementById('popular-shows');
-  const { results }  = await fetchData('tv');
+  const { results }  = await fetchData('tv/popular');
 
   results.forEach((show) => {
     const {
@@ -112,6 +112,81 @@ const displayPopularShows = async () => {
   });
 };
 
+const displayMovieDetails = async () => {
+  const movieId = window.location.search.split('=')[1]
+  const movie = await fetchData(`movie/${movieId}`)
+
+  const movieDetails = document.createElement('div');
+  movieDetails.classList.add('movie-details');
+
+  const {
+    budget,
+    genres,
+    title,
+    runtime,
+    overview,
+    release_date: date,
+    revenue,
+    status,
+    production_companies: companies,
+    homepage,
+    poster_path: image,
+    vote_average: rate,
+  } = movie;
+  console.log(movie)
+
+  const formatToUSD = (value) =>
+    value.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
+  const production = companies
+    .map((company) => company.name)
+    .join(", ");
+
+  movieDetails.innerHTML = `
+  <div class="details-top">
+  <div>
+    <img
+      src=https://image.tmdb.org/t/p/w500/${image}
+      class="card-img-top"
+      alt=${title}
+    />
+  </div>
+  <div>
+    <h2>${title}</h2>
+    <p>
+      <i class="fas fa-star text-primary"></i>
+      ${rate.toFixed(1)} / 10
+    </p>
+    <p class="text-muted">Release Date: ${date}</p>
+    <p>
+    ${overview}
+    </p>
+    <h5>Genres</h5>
+    <ul class="list-group">
+    ${genres.map((genre) =>
+      `<li>${genre.name}</li>`).join('')}
+    </ul>
+    <a href=${homepage} target="_blank" class="btn">Visit Movie Homepage</a>
+  </div>
+</div>
+<div class="details-bottom">
+  <h2>Movie Info</h2>
+  <ul>
+    <li><span class="text-secondary">Budget:</span> ${formatToUSD(budget)}</li>
+    <li><span class="text-secondary">Revenue:</span> ${formatToUSD(revenue)}</li>
+    <li><span class="text-secondary">Runtime:</span> ${runtime} minutes</li>
+    <li><span class="text-secondary">Status:</span> ${status}</li>
+  </ul>
+  <h4>Production Companies</h4>
+  <div class="list-group">${production}</div>
+</div>
+  `
+  document.querySelector('.back').appendChild(movieDetails)
+}
+
 
 
 const init = () => {
@@ -122,6 +197,7 @@ const init = () => {
       break;
 
     case "/movie-details.html":
+      displayMovieDetails();
       break;
 
     case "/search.html":
