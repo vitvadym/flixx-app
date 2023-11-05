@@ -1,6 +1,6 @@
 const route = {
-  page: window.location.pathname
-}
+  page: window.location.pathname,
+};
 
 const highlightActiveLink = () => {
   const links = document.querySelectorAll(".nav-link");
@@ -19,10 +19,11 @@ const hideSpinner = () => {
   document.querySelector(".overlay").classList.remove("show");
 };
 
-
 const fetchData = async (endpoint) => {
   const API_KEY = "ecfebf36fb13c9599b30b4385926dcff";
   const API_URL = "https://api.themoviedb.org/3";
+
+
 
   try {
     showSpinner();
@@ -43,7 +44,6 @@ const fetchData = async (endpoint) => {
 };
 
 const displayPopularMovies = async () => {
-  const parent = document.getElementById('popular-movies');
   const { results } = await fetchData("movie/popular");
 
   results.forEach((movie) => {
@@ -73,13 +73,14 @@ const displayPopularMovies = async () => {
   </div>
     `;
 
-    parent.appendChild(movieCard);
+    document
+      .getElementById("popular-movies")
+      .appendChild(movieCard);
   });
 };
 
 const displayPopularShows = async () => {
-  const parent = document.getElementById('popular-shows');
-  const { results }  = await fetchData('tv/popular');
+  const { results } = await fetchData("tv/popular");
 
   results.forEach((show) => {
     const {
@@ -108,16 +109,25 @@ const displayPopularShows = async () => {
   </div>
     `;
 
-    parent.appendChild(TVShowCard);
+    document
+      .getElementById("popular-shows")
+      .appendChild(TVShowCard);
   });
 };
 
-const displayMovieDetails = async () => {
-  const movieId = window.location.search.split('=')[1]
-  const movie = await fetchData(`movie/${movieId}`)
+const displayBackground = (type, image) => {
+  const background = document.createElement('div')
+  background.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${image})`;
+  background.classList.add('background-overlay')
 
-  const movieDetails = document.createElement('div');
-  movieDetails.classList.add('movie-details');
+  type === 'movie'
+    ? document.getElementById('movie-details').appendChild(background)
+    : document.getElementById('show-details').appendChild(background)
+}
+
+const displayMovieDetails = async () => {
+  const movieId = window.location.search.split("=")[1];
+  const movie = await fetchData(`movie/${movieId}`);
 
   const {
     budget,
@@ -131,9 +141,11 @@ const displayMovieDetails = async () => {
     production_companies: companies,
     homepage,
     poster_path: image,
+    backdrop_path: background,
     vote_average: rate,
   } = movie;
-  console.log(movie)
+
+  displayBackground('movie', background)
 
   const formatToUSD = (value) =>
     value.toLocaleString("en-US", {
@@ -144,6 +156,8 @@ const displayMovieDetails = async () => {
   const production = companies
     .map((company) => company.name)
     .join(", ");
+
+  const movieDetails = document.createElement('div')
 
   movieDetails.innerHTML = `
   <div class="details-top">
@@ -166,8 +180,7 @@ const displayMovieDetails = async () => {
     </p>
     <h5>Genres</h5>
     <ul class="list-group">
-    ${genres.map((genre) =>
-      `<li>${genre.name}</li>`).join('')}
+    ${genres.map((genre) => `<li>${genre.name}</li>`).join("")}
     </ul>
     <a href=${homepage} target="_blank" class="btn">Visit Movie Homepage</a>
   </div>
@@ -176,17 +189,21 @@ const displayMovieDetails = async () => {
   <h2>Movie Info</h2>
   <ul>
     <li><span class="text-secondary">Budget:</span> ${formatToUSD(budget)}</li>
-    <li><span class="text-secondary">Revenue:</span> ${formatToUSD(revenue)}</li>
+    <li><span class="text-secondary">Revenue:</span> ${formatToUSD(
+    revenue
+  )}</li>
     <li><span class="text-secondary">Runtime:</span> ${runtime} minutes</li>
     <li><span class="text-secondary">Status:</span> ${status}</li>
   </ul>
   <h4>Production Companies</h4>
   <div class="list-group">${production}</div>
 </div>
-  `
-  document.querySelector('.back').appendChild(movieDetails)
-}
+  `;
 
+  document
+    .getElementById('movie-details')
+    .appendChild(movieDetails);
+};
 
 
 const init = () => {
@@ -201,7 +218,6 @@ const init = () => {
       break;
 
     case "/search.html":
-
       break;
 
     case "/shows.html":
@@ -213,7 +229,7 @@ const init = () => {
       break;
   }
 
-  highlightActiveLink()
+  highlightActiveLink();
 };
 
-document.addEventListener('readystatechange', init)
+document.addEventListener("DOMContentLoaded", init);
