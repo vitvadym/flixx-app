@@ -138,8 +138,11 @@ ul {
 
 /* Card */
 .card {
-  background: #04376b;
+  /* background: #04376b; */
   padding: 5px;
+  height: 100%;
+  border: 1px solid #04376b;
+  border-radius: 5px;
 }
 
 .card img {

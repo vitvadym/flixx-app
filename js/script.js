@@ -13,7 +13,6 @@ const state = {
   },
 };
 
-
 const highlightActiveLink = () => {
   const links = document.querySelectorAll('.nav-link');
   links.forEach((link) => {
@@ -45,7 +44,7 @@ const hideSpinner = () => {
 };
 
 const fetchData = async (endpoint) => {
-  const { API_KEY, API_URL} = state;
+  const { API_KEY, API_URL } = state;
 
   try {
     showSpinner();
@@ -153,7 +152,6 @@ const displayMovieDetails = async () => {
     backdrop_path: background,
     vote_average: rate,
   } = movie;
-  console.log(homepage);
 
   displayBackground("movie", background);
 
@@ -294,33 +292,33 @@ const displayShowDetails = async () => {
   document.getElementById("show-details").appendChild(showDetails);
 };
 
-  const initSwiper = () => {
-    const swiper = new Swiper(".swiper", {
-      speed: 400,
-      slidesPerView: 1,
-      loop: true,
-      freeMode: true,
-      spaceBetween: 30,
-      autoplay: {
-        delay: 4000,
+const initSwiper = () => {
+  const swiper = new Swiper(".swiper", {
+    speed: 400,
+    slidesPerView: 1,
+    loop: true,
+    freeMode: true,
+    spaceBetween: 30,
+    autoplay: {
+      delay: 4000,
+    },
+
+    breakpoints: {
+      500: {
+        slidesPerView: 2,
+        spaceBetween: 20,
       },
-  
-      breakpoints: {
-        500: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 4,
-          spaceBetween: 40,
-        },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 30,
       },
-    });
-  };
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 40,
+      },
+    },
+  });
+};
 
 
 const showSliders = async () => {
@@ -348,47 +346,12 @@ const showSliders = async () => {
   initSwiper();
 };
 
-const controllPagination = () => {
-  const prevButton = document.getElementById('prev');
-  const nextButton = document.getElementById('next');
-
-  if (state.searchQuery.page <= 1) {
-    prevButton.disabled = true;
-  } else {
-    prevButton.disabled = false;
-  }
-
-  if (state.searchQuery.page >= state.searchQuery.totalPages) {
-    nextButton.disabled = true;
-  } else {
-    nextButton.disabled = false;
-  }
-
-  prevButton.addEventListener('click', async () => {
-    if (state.searchQuery.page > 1) {
-      state.searchQuery.page--;
-      const {results} = await searchAPIData();
-      displaySearchResults(results);
-      console.log(state);
-    }
-  });
-
-  nextButton.addEventListener('click', async () => {
-    if (state.searchQuery.page < state.searchQuery.totalPages) {
-      state.searchQuery.page++;
-      const {results} = await searchAPIData();
-      displaySearchResults(results);
-      console.log(state);
-    }
-  });
-};
-
 const displaySearchResults = (results) => {
   document.getElementById('search-results-heading').innerHTML = '';
   document.getElementById('search-results').innerHTML = '';
 
   const {
-    searchQuery: {page, totalPages, totalResults},
+    searchQuery: { page, totalPages, totalResults },
   } = state;
 
   if (!!results.length) {
@@ -408,22 +371,19 @@ const displaySearchResults = (results) => {
       cart.innerHTML = `
           <div class="card">
             <a href=${state.searchQuery.type}-details.html?id=${id}>
-  
-            <img src=${
-              !image
-                ? '/images/no-image.jpg'
-                : `https://image.tmdb.org/t/p/w500/${image}`
-            }
+            <img src=${image
+          ? `https://image.tmdb.org/t/p/w500/${image}`
+          : 'http://surl.li/mzaha'
+        }
              class="card-img-top" alt=${title || name} />
           </a>
           <div class="card-body">
             <h5 class="card-title">${title || name}</h5>
             <p class="card-text">
-            ${
-              release_date
-                ? `Release Date: ${release_date || first_air_date}`
-                : ''
-            }
+            ${release_date
+          ? `Release Date: ${release_date || first_air_date}`
+          : ''
+        }
             </p>
           </div>
         </div>`;
@@ -433,13 +393,10 @@ const displaySearchResults = (results) => {
         ${totalResults} for ${name}</h2>`;
 
       document.getElementById('search-results').appendChild(cart);
-
       const pages = document.querySelector('.page-counter');
       pages.textContent = `
       Page ${page} of ${totalPages}`;
     });
-
-    controllPagination();
   } else {
     const message = document.createElement('h1');
     const pagination = document.querySelector('.pagination');
@@ -457,7 +414,7 @@ const searchAPIData = async () => {
   const {
     API_KEY,
     API_URL,
-    searchQuery: {name, type, page},
+    searchQuery: { name, type, page },
   } = state;
 
   showSpinner();
@@ -469,7 +426,6 @@ const searchAPIData = async () => {
 
     const data = await response.json();
     hideSpinner();
-
     return data;
   } catch (error) {
     alert(error.message);
@@ -483,13 +439,41 @@ const searchMedia = async () => {
   state.searchQuery.name = urlParams.get('search-term');
   state.searchQuery.type = urlParams.get('type');
 
-  const {results, page, total_pages, total_results} = await searchAPIData();
+  const { results, page, total_pages, total_results } = await searchAPIData();
   state.searchQuery.page = page;
   state.searchQuery.totalResults = total_results;
   state.searchQuery.totalPages = total_pages;
-  console.log(state);
 
   displaySearchResults(results);
+};
+
+const displayPagination = () => {
+  const prevButton = document.getElementById('prev');
+  const nextButton = document.getElementById('next');
+
+  nextButton.addEventListener('click', async () => {
+    if (state.searchQuery.page < state.searchQuery.totalPages) {
+      state.searchQuery.page++;
+
+      const { results } = await searchAPIData();
+      displaySearchResults(results);
+      prevButton.disabled = false;
+    } else {
+      nextButton.disabled = true;
+    }
+  });
+
+  prevButton.addEventListener('click', async () => {
+    if (state.searchQuery.page > 1) {
+      state.searchQuery.page--;
+
+      const { results } = await searchAPIData();
+      displaySearchResults(results);
+      nextButton.disabled = false;
+    } else {
+      prevButton.disabled = true;
+    }
+  });
 };
 
 const init = () => {
@@ -506,6 +490,7 @@ const init = () => {
 
     case '/search.html':
       searchMedia();
+      displayPagination();
       break;
 
     case '/shows.html':

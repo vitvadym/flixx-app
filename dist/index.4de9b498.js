@@ -683,7 +683,6 @@ const displayMovieDetails = async ()=>{
     const movieId = window.location.search.split("=")[1];
     const movie = await fetchData(`movie/${movieId}`);
     const { budget, genres, title, runtime, overview, release_date: date, revenue, status, production_companies: companies, homepage, poster_path: image, backdrop_path: background, vote_average: rate } = movie;
-    console.log(homepage);
     displayBackground("movie", background);
     const formatToUSD = (value)=>value.toLocaleString("en-US", {
             style: "currency",
@@ -828,44 +827,18 @@ const showSliders = async ()=>{
     });
     initSwiper();
 };
-const controllPagination = ()=>{
-    const prevButton = document.getElementById("prev");
-    const nextButton = document.getElementById("next");
-    if (state.searchQuery.page <= 1) prevButton.disabled = true;
-    else prevButton.disabled = false;
-    if (state.searchQuery.page >= state.searchQuery.totalPages) nextButton.disabled = true;
-    else nextButton.disabled = false;
-    prevButton.addEventListener("click", async ()=>{
-        if (state.searchQuery.page > 1) {
-            state.searchQuery.page--;
-            const { results } = await searchAPIData();
-            displaySearchResults(results);
-            console.log(state);
-        }
-    });
-    nextButton.addEventListener("click", async ()=>{
-        if (state.searchQuery.page < state.searchQuery.totalPages) {
-            state.searchQuery.page++;
-            const { results } = await searchAPIData();
-            displaySearchResults(results);
-            console.log(state);
-        }
-    });
-};
 const displaySearchResults = (results)=>{
     document.getElementById("search-results-heading").innerHTML = "";
     document.getElementById("search-results").innerHTML = "";
     const { searchQuery: { page, totalPages, totalResults } } = state;
-    if (!!results.length) {
-        results.forEach((result)=>{
-            const { poster_path: image, title, name, id, first_air_date, release_date } = result;
-            const cart = document.createElement("div");
-            cart.classList.add("cart");
-            cart.innerHTML = `
+    if (!!results.length) results.forEach((result)=>{
+        const { poster_path: image, title, name, id, first_air_date, release_date } = result;
+        const cart = document.createElement("div");
+        cart.classList.add("cart");
+        cart.innerHTML = `
           <div class="card">
             <a href=${state.searchQuery.type}-details.html?id=${id}>
-  
-            <img src=${!image ? "/images/no-image.jpg" : `https://image.tmdb.org/t/p/w500/${image}`}
+            <img src=${image ? `https://image.tmdb.org/t/p/w500/${image}` : "http://surl.li/mzaha"}
              class="card-img-top" alt=${title || name} />
           </a>
           <div class="card-body">
@@ -875,16 +848,15 @@ const displaySearchResults = (results)=>{
             </p>
           </div>
         </div>`;
-            const resultHeading = document.getElementById("search-results-heading");
-            resultHeading.innerHTML = `<h2>${results.length} results of 
+        const resultHeading = document.getElementById("search-results-heading");
+        resultHeading.innerHTML = `<h2>${results.length} results of 
         ${totalResults} for ${name}</h2>`;
-            document.getElementById("search-results").appendChild(cart);
-            const pages = document.querySelector(".page-counter");
-            pages.textContent = `
+        document.getElementById("search-results").appendChild(cart);
+        const pages = document.querySelector(".page-counter");
+        pages.textContent = `
       Page ${page} of ${totalPages}`;
-        });
-        controllPagination();
-    } else {
+    });
+    else {
         const message = document.createElement("h1");
         const pagination = document.querySelector(".pagination");
         pagination.style.display = "none";
@@ -915,8 +887,27 @@ const searchMedia = async ()=>{
     state.searchQuery.page = page;
     state.searchQuery.totalResults = total_results;
     state.searchQuery.totalPages = total_pages;
-    console.log(state);
     displaySearchResults(results);
+};
+const displayPagination = ()=>{
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+    nextButton.addEventListener("click", async ()=>{
+        if (state.searchQuery.page < state.searchQuery.totalPages) {
+            state.searchQuery.page++;
+            const { results } = await searchAPIData();
+            displaySearchResults(results);
+            prevButton.disabled = false;
+        } else nextButton.disabled = true;
+    });
+    prevButton.addEventListener("click", async ()=>{
+        if (state.searchQuery.page > 1) {
+            state.searchQuery.page--;
+            const { results } = await searchAPIData();
+            displaySearchResults(results);
+            nextButton.disabled = false;
+        } else prevButton.disabled = true;
+    });
 };
 const init = ()=>{
     switch(state.page){
@@ -930,6 +921,7 @@ const init = ()=>{
             break;
         case "/search.html":
             searchMedia();
+            displayPagination();
             break;
         case "/shows.html":
             displayPopularShows();
