@@ -830,14 +830,14 @@ const showSliders = async ()=>{
 const displaySearchResults = (results)=>{
     document.getElementById("search-results-heading").innerHTML = "";
     document.getElementById("search-results").innerHTML = "";
-    const { searchQuery: { page, totalPages, totalResults } } = state;
     if (!!results.length) results.forEach((result)=>{
         const { poster_path: image, title, name, id, first_air_date, release_date } = result;
         const cart = document.createElement("div");
         cart.classList.add("cart");
+        const { searchQuery: { page, name: query, totalPages, totalResults, type } } = state;
         cart.innerHTML = `
           <div class="card">
-            <a href=${state.searchQuery.type}-details.html?id=${id}>
+            <a href=${type}-details.html?id=${id}>
             <img src=${image ? `https://image.tmdb.org/t/p/w500/${image}` : "http://surl.li/mzaha"}
              class="card-img-top" alt=${title || name} />
           </a>
@@ -850,7 +850,7 @@ const displaySearchResults = (results)=>{
         </div>`;
         const resultHeading = document.getElementById("search-results-heading");
         resultHeading.innerHTML = `<h2>${results.length} results of 
-        ${totalResults} for ${name}</h2>`;
+        ${totalResults} for ${query}</h2>`;
         document.getElementById("search-results").appendChild(cart);
         const pages = document.querySelector(".page-counter");
         pages.textContent = `
