@@ -1,3 +1,5 @@
+import Swiper from '../lib/swiper';
+
 const state = {
   page: window.location.pathname,
   API_KEY: "ecfebf36fb13c9599b30b4385926dcff",
@@ -288,35 +290,38 @@ const displayShowDetails = async () => {
   document.getElementById("show-details").appendChild(showDetails);
 };
 
-const initSwiper = () => {
-  const swiper = new Swiper(".swiper", {
-    slidesPerView: 1,
-    loop: true,
-    freeMode: true,
-    spaceBetween: 30,
-    autoplay: {
-      delay: 4000,
-    },
+  const initSwiper = () => {
+    const swiper = new Swiper(".swiper", {
+      speed: 400,
+      slidesPerView: 1,
+      loop: true,
+      freeMode: true,
+      spaceBetween: 30,
+      autoplay: {
+        delay: 4000,
+      },
+  
+      breakpoints: {
+        500: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+      },
+    });
+  };
 
-    breakpoints: {
-      500: {
-        slidesPerView: 2,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 30,
-      },
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 40,
-      },
-    },
-  });
-};
 
 const showSliders = async () => {
   const { results } = await fetchData("movie/top_rated");
+  console.log(results);
 
   results.forEach((movie) => {
     const { id, title, vote_average: rate, poster_path: image } = movie;
@@ -507,9 +512,9 @@ const init = () => {
       displayShowDetails();
       break;
   }
-
   highlightActiveLink();
 };
+
 
 document.addEventListener('DOMContentLoaded', init);
 const submitBtn = document.querySelector('.btn');

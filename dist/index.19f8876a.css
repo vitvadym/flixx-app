@@ -1,0 +1,46 @@
+.overlay {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.overlay__inner {
+  background-color: #00000080;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.overlay__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner {
+  border: 5px solid #00000080;
+  border-top-color: #fff;
+  border-radius: 100%;
+  width: 75px;
+  height: 75px;
+  animation: 1s linear infinite spin;
+  display: inline-block;
+}
+
+.show {
+  display: inline-block;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=index.19f8876a.css.map */

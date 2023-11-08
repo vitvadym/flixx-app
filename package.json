@@ -1,5 +1,5 @@
 {
-  "name": "movister-app",
+  "name": "flixx-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,13 +7,13 @@
     "lib": "lib"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "parcel ./*.html",
+    "build": "parcel build './*.html'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "vite": "^4.5.0"
+  "devDependencies": {
+    "parcel": "^2.10.2"
   }
 }
