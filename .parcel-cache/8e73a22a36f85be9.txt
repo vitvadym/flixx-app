@@ -32,7 +32,7 @@
 106D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\_\_class_private_field_set\package.json133439224886524654 0
 69D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\js-yaml\LICENSE133439224874249978 0
 88D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\graph\src\AdjacencyList.js133439224876459743 0
-45D:\root\udemy\Brad_Traversy_JS\flixx-app\dist133439225719086126 1
+45D:\root\udemy\Brad_Traversy_JS\flixx-app\dist133439236365171856 1
 79D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\lmdb\src\v8-functions.cpp133439224884196833 0
 90D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\core\lib\loadParcelPlugin.js133439224883636445 0
 75D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\domutils\lib\feeds.js133439224874726631 0
@@ -76,7 +76,7 @@
 100D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\cjs\lexer\Lexer.cjs133439224882916105 0
 96D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\posthtml\node_modules\posthtml-parser\dist133439224877073747 1
 85D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\caniuse-lite\data\regions\AX.js133439224881856493 0
-61D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\tv-details.html133439225718899485 0
+61D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\tv-details.html133439236365166024 0
 125D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\node\Url.js133439224884895254 0
 78D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\reporter-cli\lib133439224878617614 1
 89D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\source-map\dist\source-map.debug.js133439224879417690 0
@@ -91,7 +91,7 @@
 88D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\source-map-js\lib\binary-search.js133439224876229091 0
 116D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\_\_class_static_private_field_update\package.json133439224886524654 0
 84D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\chrome-trace-event\LICENSE.txt133439224876936410 0
-53D:\root\udemy\Brad_Traversy_JS\flixx-app\package.json133439225068828316 0
+53D:\root\udemy\Brad_Traversy_JS\flixx-app\package.json133439236360296164 0
 80D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\css-what\lib\es\index.d.ts133439224879417690 0
 83D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\profiler\lib\Trace.js133439224876639659 0
 74D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\is-arrayish\index.js133439224876005274 0
@@ -489,7 +489,7 @@
 100D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\css-select\lib\pseudo-selectors\pseudos.js.map133439224882215757 0
 99D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\lib\lexer\index.js133439224886019783 0
 76D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\react-refresh\babel.js133439224874648924 0
-67D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.4de9b498.js.map133439225719086126 0
+67D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.4de9b498.js.map133439236364536265 0
 86D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\lines-and-columns\build\index.js133439224874726631 0
 63D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\path-type133439224875829674 1
 118D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\cjs\definition-syntax\SyntaxError.cjs133439224884456558 0
@@ -915,7 +915,7 @@
 99D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\abortcontroller-polyfill\dist\umd-polyfill.js133439224878018916 0
 123D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\css-select\lib\types.d.ts.map133439224879887497 0
 109D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\cjs\syntax\atrule\import.cjs133439224881986439 0
-63D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.70ad0341.js133439225718929864 0
+63D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.70ad0341.js133439236364374707 0
 93D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\cjs\_wrap_native_super.cjs133439224883521760 0
 88D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\type-fest\source\set-required.d.ts133439224880531355 0
 90D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\css-tree\cjs\syntax\config\lexer.cjs133439224883026406 0
@@ -1846,7 +1846,7 @@
 71D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\msgpackr\index.js133439224878393556 0
 128D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\lib\syntax\scope\value.js133439224884935241 0
 75D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\msgpackr\iterators.js133439224878782704 0
-68D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.b2625c6b.css.map133439225718929864 0
+68D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.b2625c6b.css.map133439236364374707 0
 70D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\msgpackr\LICENSE133439224874289965 0
 87D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\css-tree\cjs\syntax\node\Rule.cjs133439224884416573 0
 103D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\cjs\_initializer_define_property.cjs133439224881886471 0
@@ -2802,7 +2802,7 @@
 93D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\src\_apply_decs_2203_r.mjs133439224887493898 0
 103D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\lib\tokenizer\types.js133439224886726784 0
 89D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\caniuse-lite\data\regions\alt-oc.js133439224879417690 0
-64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.19f8876a.css133439225718899485 0
+64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.19f8876a.css133439236364276320 0
 98D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\lib\syntax\atrule133439224886726784 1
 100D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\lib\syntax\index.js133439224886019783 0
 97D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\csso\node_modules\css-tree\lib\syntax\scope133439224886875008 1
@@ -4566,7 +4566,7 @@
 107D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\css-tree\dist133439224881149511 1
 80D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\src\index.mjs133439224888013621 0
 95D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\src\_array_like_to_array.mjs133439224887503889 0
-64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.b2625c6b.css133439225718859497 0
+64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.b2625c6b.css133439236364179564 0
 92D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\src\_array_with_holes.mjs133439224887513890 0
 91D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\src\_async_generator.mjs133439224887524226 0
 87D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@swc\helpers\src\_await_value.mjs133439224887524226 0
@@ -5444,7 +5444,7 @@
 120D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace\String.js133439224881527048 0
 117D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace\Url.js133439224881728567 0
 119D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace\Value.js133439224881936452 0
-67D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.70ad0341.js.map133439225718929864 0
+67D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.70ad0341.js.map133439236364536265 0
 133D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace\property\background.js133439224878419311 0
 127D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\csso\lib\replace\property\font.js133439224880472093 0
 138D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@parcel\optimizer-htmlnano\node_modules\css-select\lib\pseudo-selectors\pseudos.d.ts133439224880627096 0
@@ -5764,7 +5764,7 @@
 91D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@lmdb\lmdb-win32-x64\node.abi115.node133439224878632653 0
 89D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@lmdb\lmdb-win32-x64\node.napi.node133439224880140233 0
 87D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@lmdb\lmdb-win32-x64\package.json133439224874430260 0
-63D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.4de9b498.js133439225719086126 0
+63D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.4de9b498.js133439236364374707 0
 84D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@lmdb\lmdb-win32-x64\README.md133439224874949737 0
 67D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@lezer\common133439224877218701 1
 68D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\@lezer\lr\dist133439224877767006 1
@@ -5865,12 +5865,12 @@
 85D:\root\udemy\Brad_Traversy_JS\flixx-app\node_modules\.bin\update-browserslist-db.ps1133439224891516949 0
 55D:\root\udemy\Brad_Traversy_JS\flixx-app\lib\swiper.css133092820780000000 0
 54D:\root\udemy\Brad_Traversy_JS\flixx-app\lib\swiper.js133093423580000000 0
-68D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.19f8876a.css.map133439225718929864 0
-64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.8d75afe3.css133439225719086126 0
-68D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.8d75afe3.css.map133439225719086126 0
-56D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.html133439225718899485 0
-64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\movie-details.html133439225718899485 0
-57D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\search.html133439225719086126 0
-70D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\showcase-bg.4a7e5170.jpg133439225719086126 0
-56D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\shows.html133439225719086126 0
+68D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.19f8876a.css.map133439236364374707 0
+64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.8d75afe3.css133439236364276320 0
+68D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.8d75afe3.css.map133439236364374707 0
+56D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\index.html133439236365166024 0
+64D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\movie-details.html133439236365166024 0
+57D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\search.html133439236364774408 0
+70D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\showcase-bg.4a7e5170.jpg133439236364276320 0
+56D:\root\udemy\Brad_Traversy_JS\flixx-app\dist\shows.html133439236364774408 0
 56D:\root\udemy\Brad_Traversy_JS\flixx-app\css\spinner.css133435958684616689 0

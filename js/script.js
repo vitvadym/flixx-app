@@ -153,6 +153,7 @@ const displayMovieDetails = async () => {
     backdrop_path: background,
     vote_average: rate,
   } = movie;
+  console.log(homepage);
 
   displayBackground("movie", background);
 
@@ -192,7 +193,10 @@ const displayMovieDetails = async () => {
     <ul class="list-group">
     ${genres.map((genre) => `<li>${genre.name}</li>`).join("")}
     </ul>
-    <a href=${homepage} target="_blank" class="btn">Visit Movie Homepage</a>
+    ${homepage
+      ? `<a href=${homepage} target="_blank" class="btn">Visit Movie Homepage</a>`
+      : ''
+    }
   </div>
 </div>
 <div class="details-bottom">

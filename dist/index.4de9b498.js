@@ -683,6 +683,7 @@ const displayMovieDetails = async ()=>{
     const movieId = window.location.search.split("=")[1];
     const movie = await fetchData(`movie/${movieId}`);
     const { budget, genres, title, runtime, overview, release_date: date, revenue, status, production_companies: companies, homepage, poster_path: image, backdrop_path: background, vote_average: rate } = movie;
+    console.log(homepage);
     displayBackground("movie", background);
     const formatToUSD = (value)=>value.toLocaleString("en-US", {
             style: "currency",
@@ -713,7 +714,7 @@ const displayMovieDetails = async ()=>{
     <ul class="list-group">
     ${genres.map((genre)=>`<li>${genre.name}</li>`).join("")}
     </ul>
-    <a href=${homepage} target="_blank" class="btn">Visit Movie Homepage</a>
+    ${homepage ? `<a href=${homepage} target="_blank" class="btn">Visit Movie Homepage</a>` : ""}
   </div>
 </div>
 <div class="details-bottom">
