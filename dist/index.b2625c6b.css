@@ -225,6 +225,17 @@ section h2 {
   display: flex;
 }
 
+@media (width <= 900px) {
+  .details-top {
+    flex-direction: column;
+    min-width: 450px;
+  }
+
+  .details-top div img {
+    margin: 0 auto;
+  }
+}
+
 .details-top img {
   object-fit: cover;
   width: 400px;
